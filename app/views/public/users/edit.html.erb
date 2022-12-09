@@ -1,2 +1,33 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="container">
+  <h2>会員情報変更</h2>
+  <div class="row">
+    <div class="offset-md-2 col-md-9 px-5 px-sm-0 mt-3 text-nowrap">
+
+      <%= form_with model: @user do |f| %>
+      <%= render 'layouts/errors', obj: @user %>
+      <table class="table table-borderless">
+        <tr>
+          <th><%= f.label :image, "プロフィール画像" %></th>
+          <td><%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :name, "アカウント名" %></th>
+          <td><%= f.text_field :name, autofocus: true, required: true, class: 'form-control' %></td>
+        </tr>
+        
+        <tr>
+          <th><%= f.label :introduction, "自己紹介文" %></th>
+          <td><%= f.text_area :introduction, autofocus: true, required: true, class: 'form-control' %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :email, "メールアドレス" %></th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td><%= f.submit "変更" , class: 'btn btn-success form-control'%></td>
+        </tr>
+      <% end %>
+      </table>

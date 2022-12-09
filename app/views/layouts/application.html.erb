@@ -3,6 +3,7 @@
   <head>
     <title>Yamatabi</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://kit.fontawesome.com/9eb88cfd56.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +12,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/public/header' %>
+    <% elsif admin_signed_in? %>
+      <%= render 'layouts/admin/header' %>
+    <% else %>
+      <%= render 'layouts/public/header' %>
+    <% end %>
+    <main>
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </main>
   </body>
 </html>
