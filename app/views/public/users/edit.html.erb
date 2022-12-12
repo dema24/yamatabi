@@ -3,8 +3,8 @@
   <div class="row">
     <div class="offset-md-2 col-md-9 px-5 px-sm-0 mt-3 text-nowrap">
 
-      <%= form_with model: @user do |f| %>
-      <%= render 'layouts/errors', obj: @user %>
+      <%= form_with model: current_user do |f| %>
+      <%= render 'layouts/errors', obj: current_user %>
       <table class="table table-borderless">
         <tr>
           <th><%= f.label :image, "プロフィール画像" %></th>
@@ -14,10 +14,10 @@
           <th><%= f.label :name, "アカウント名" %></th>
           <td><%= f.text_field :name, autofocus: true, required: true, class: 'form-control' %></td>
         </tr>
-        
+
         <tr>
           <th><%= f.label :introduction, "自己紹介文" %></th>
-          <td><%= f.text_area :introduction, autofocus: true, required: true, class: 'form-control' %></td>
+          <td><%= f.text_area :introduction, autofocus: true, class: 'form-control' %></td>
         </tr>
 
         <tr>
@@ -27,7 +27,8 @@
 
         <tr>
           <td></td>
-          <td><%= f.submit "変更" , class: 'btn btn-success form-control'%></td>
+          <td><%= f.submit "変更内容を保存する" , class: 'btn btn-success form-control'%></td>
+          <td><%= link_to "退会する", user_unsubscribe_path(current_user), class: "btn btn-danger" %></td>
         </tr>
       <% end %>
       </table>
