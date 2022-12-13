@@ -23,7 +23,8 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
-    current_user.update(is_deleted: true)
+    current_user.update(is_deleted: true, name: "退会したアカウント", introduction: "")
+    current_user.profile_image.purge
     reset_session
     redirect_to root_path
   end
