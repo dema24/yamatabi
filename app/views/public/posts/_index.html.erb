@@ -7,6 +7,9 @@
           <div><%= post.title %></div>
           <div><%= post.body %></div>
         </strong>
+        <div class=<%= "favorite-" + post.id.to_s %> >
+          <%= render "public/favorites/btn", post: post %>
+        </div>
       </div>
     <% end %>
   <% end %>
