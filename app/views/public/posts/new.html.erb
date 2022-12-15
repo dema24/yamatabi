@@ -7,8 +7,12 @@
       <%= render 'layouts/errors', obj: @post %>
       <table class="table table-borderless">
         <tr>
-          <th><%= f.label :image, "投稿画像" %></th>
-          <td><%= f.file_field :images, multiple: true, class: "form-control-file user_image", accept: 'image/*' %></td>
+          <th><%= f.label :main_image, "メイン画像" %></th>
+          <td><%= f.file_field :main_image, class: "form-control-file user_image", accept: 'image/*' %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :sub_image, "サブ画像(複数枚選択可能)" %></th>
+          <td><%= f.file_field :sub_images, multiple: true, class: "form-control-file user_image", accept: 'image/*' %></td>
         </tr>
         <tr>
           <th><%= f.label :title, "タイトル" %></th>
@@ -18,6 +22,11 @@
         <tr>
           <th><%= f.label :body, "投稿文" %></th>
           <td><%= f.text_area :body, autofocus: true, class: 'form-control' %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :name, "タグ" %></th>
+          <td><%= f.text_field :name, value: @tag_list, class: 'form-control' %></td>
         </tr>
 
         <tr>

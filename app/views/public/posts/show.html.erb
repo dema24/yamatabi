@@ -9,13 +9,19 @@
   		<table class='table'>
   		  <tr>
           <td>
-            <% @post.images.each do |image| %>
-              <%= image_tag image, size:"100x100" %>
+            <%= image_tag @post.main_image, size:"100x100" %>
+            <% @post.sub_images.each do |sub_image| %>
+              <%= image_tag sub_image, size:"100x100" %>
             <% end %><br>
               <%= @post.user.name %>
           </td>
           <td><%= link_to @post.title, @post %></td>
           <td><%= @post.body %></td>
+          <td>
+            <% @post.tags.each do |tag| %>
+              #<%= tag.name %>
+            <% end %>
+          </td>
           <td class=<%= "favorite-" + @post.id.to_s %> >
             <%= render "public/favorites/btn", post: @post %>
           </td>

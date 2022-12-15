@@ -2,11 +2,14 @@
   <% posts.each do |post| %>
     <%= link_to post_path(post), class:"text-reset" do %>
       <div class="flex-column mb-5 mr-3">
-        <div><%= image_tag post.images[0], size: "190x120" %></div>
+        <div><%= image_tag post.main_image, size: "190x120" %></div>
         <strong>
           <div><%= post.title %></div>
           <div><%= post.body %></div>
         </strong>
+        <% post.tags.each do |tag| %>
+          #<%= tag.name %>
+        <% end %>
         <div class=<%= "favorite-" + post.id.to_s %> >
           <%= render "public/favorites/btn", post: post %>
         </div>

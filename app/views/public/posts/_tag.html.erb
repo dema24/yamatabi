@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+ <thead class="text-center">
+   <tr>
+     <th>タグ</th>
+   </tr>
+ </thead>
+ <tbody class="table-borderless ">
+   <% tag_list.each do |list| %>
+     <% if list.posts.count != 0 %>
+       <tr>
+         <td><%= list.name %>(<%= list.posts.count %>)</td>
+       </tr>
+      <% end %>
+   <% end %>
+ </tbody>
+</table>
