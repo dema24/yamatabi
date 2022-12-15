@@ -45,9 +45,14 @@
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
+            <%= link_to new_user_session_path,class: 'nav-link text-light' do %>
               <i class="fas fa-sign-in-alt"></i> ログイン
             <% end %>
+          </li>
+          <li>
+            <%= link_to users_guest_sign_in_path, method: :post, class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-in-alt"></i> ゲストログイン
+              <% end %>
           </li>
         <% end %>
         </ul>

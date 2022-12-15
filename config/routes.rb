@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  #顧客用
+  #管理者用
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -11,19 +11,26 @@ Rails.application.routes.draw do
     get '/search' => 'searches#search'
   end
 
-  #管理者用
+  #会員用
   devise_for :users, controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
 
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
+  end
+
   scope module: :public do
     resources :users, only:[:index, :show, :edit, :update] do
-      get 'unsubscribe'
-      patch 'withdraw'
-      resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'relationships#followings', as: 'followings'
-      get 'followers' => 'relationships#followers', as: 'followers'
+      member do
+        get 'unsubscribe'
+        patch 'withdraw'
+        get 'favorite'
+        resource :relationships, only: [:create, :destroy]
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
+     end
     end
     resources :posts, only:[:index, :show, :new, :create] do
       resources :post_comments, only: [:create, :destroy]

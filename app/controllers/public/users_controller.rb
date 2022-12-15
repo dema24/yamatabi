@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :ensure_normal_user, only: [:update, :withdraw]
 
   def index
     @users = User.where(is_deleted: false).page(params[:page]).per(10)
@@ -6,6 +7,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.page(params[:page]).per(10)
   end
 
   def edit
@@ -29,10 +31,24 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def favorite
+    @user = User.find(params[:id])
+    favorite = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_post = Post.find(favorite)
+    @favorite_posts = Kaminari.paginate_array(@favorite_post).page(params[:page]).per(10)
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction, :email, :is_deleted)
+  end
+
+  def ensure_normal_user
+    if current_user.email == 'guest@example.com'
+      flash[:notice] = 'ゲストユーザーの更新・削除はできません。'
+      redirect_to root_path
+    end
   end
 
 end
