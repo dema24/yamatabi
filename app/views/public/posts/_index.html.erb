@@ -1,20 +1,31 @@
 <div class="d-flex flex-row flex-wrap">
   <% posts.each do |post| %>
-    <%= link_to post_path(post), class:"text-reset" do %>
-      <div class="flex-column mb-5 mr-3">
-        <div><%= image_tag post.main_image, size: "190x120" %></div>
-        <strong>
-          <div><%= post.title %></div>
-          <div><%= post.body %></div>
-        </strong>
-        <% post.tags.each do |tag| %>
-          #<%= tag.name %>
-        <% end %>
-        <div class=<%= "favorite-" + post.id.to_s %> >
-          <%= render "public/favorites/btn", post: post %>
+    <div class="flex-column mb-5 mr-3">
+      <%= link_to post_path(post) do %>
+        <div>
+          <%= image_tag post.get_main_image, size: "250x200" %>
         </div>
+      <% end %>
+      <%= link_to user_path(post.user), class:"text-reset" do %>
+        <div>
+          <%= image_tag post.user.get_profile_image, size:'20x20', class:"rounded-circle" %>
+          <%= post.user.name %>
+        </div>
+      <% end %>
+      <%= link_to post_path(post), class:"text-reset" do %>
+        <strong>
+          <div class="pl-4"><%= post.title.truncate(10) %></div>
+        </strong>
+      <% end %>
+      <div class="pl-4">
+        <% post.tags.each do |tag| %>
+          #<%= tag.name %><br>
+        <% end %>
       </div>
-    <% end %>
+      <div class=<%= "favorite-" + post.id.to_s %> >
+        <%= render "public/favorites/btn", post: post %>
+      </div>
+    </div>
   <% end %>
 </div>
 <div class=" d-flex mb-3 justify-content-center">

@@ -1,6 +1,14 @@
 class Public::PostsController < ApplicationController
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).per(9)
+    @tag_list = Tag.all
+  end
+
+  def follow
+    @users = current_user.followings
+    @users.each do |user|
+      @posts = user.posts.page(params[:page]).per(9)
+    end
     @tag_list = Tag.all
   end
 

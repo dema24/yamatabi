@@ -1,8 +1,9 @@
 <table class='table'>
   <thead>
     <tr>
-      <th>image</th>
-      <th>name</th>
+      <th class="text-nowrap">プロフィール画像</th>
+      <th class="text-nowrap">アカウント名</th>
+      <th class="text-nowrap">自己紹介文</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -11,6 +12,7 @@
       <tr>
         <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
         <td><%= user.name %></td>
+        <td><%= user.introduction %></td>
         <td><%= render "public/relationships/btn", user: user %></td>
         <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
       </tr>

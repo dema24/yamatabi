@@ -33,6 +33,9 @@ Rails.application.routes.draw do
      end
     end
     resources :posts, only:[:index, :show, :new, :create, :destroy] do
+      collection do
+        get 'follow'
+      end
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end

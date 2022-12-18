@@ -11,6 +11,10 @@ class Post < ApplicationRecord
 
   has_one_attached :main_image
   has_many_attached :sub_images
+  
+  def get_main_image
+    (main_image.attached?) ? main_image : 'no_image.jpg'
+  end
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

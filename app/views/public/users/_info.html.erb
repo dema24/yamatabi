@@ -1,19 +1,19 @@
 <table class='table'>
-  <tr><%= image_tag user.get_profile_image, size:'100x100' %></tr>
+  <div class="text-center"><%= image_tag user.get_profile_image, size:'150x150', class:"rounded-circle" %></div>
   <tr>
-	  <th>name</th>
+	  <th class="text-nowrap">アカウント名</th>
 	  <th><%= user.name %></th>
   </tr>
   <tr>
-	  <th>introduction</th>
+	  <th class="text-nowrap">自己紹介文</th>
 	  <th><%= user.introduction %></th>
   </tr>
   <tr>
-    <th>follows</th>
+    <th class="text-nowrap">フォロー</th>
     <th><%= link_to user.followings.count, followings_user_path(user) %></th>
   </tr>
   <tr>
-    <th>followers</th>
+    <th class="text-nowrap">フォロワー</th>
     <th><%= link_to user.followers.count, followers_user_path(user) %></th>
   </tr>
 </table>
@@ -25,6 +25,7 @@
     <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
       <i class="fas fa-user-cog"></i>
     <% end %>
+    <%= link_to "新規投稿する", new_post_path, class: "btn btn-success mt-2" %>
   <% end %>
 
   <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
