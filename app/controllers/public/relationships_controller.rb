@@ -15,11 +15,19 @@ class Public::RelationshipsController < ApplicationController
 
   def followings
     user = User.find(params[:id])
-		@users = user.followings
+		@users = user.followings.page(params[:page]).per(10)
   end
 
   def followers
     user = User.find(params[:id])
-		@users = user.followers
+		@users = user.followers.page(params[:page]).per(10)
+  end
+
+  def follow
+    @users = current_user.followings
+    @users.each do |user|
+      @posts = user.posts.page(params[:page]).per(9).order(created_at: :desc)
+    end
+    @tag_list = Tag.all
   end
 end

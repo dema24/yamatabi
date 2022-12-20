@@ -4,8 +4,11 @@
       <h2>会員情報</h2>
       <%= render 'info', user: @user %>
     </div>
-    <div class='col-md-8 offset-md-1'>
-      <h2>お気に入り</h2>
+    <div class='col-md-9'>
+      <div class="form-inline">
+        <h2>お気に入り</h2>
+        <%= link_to "My投稿一覧へ", user_path(current_user), class:"col-md-3 offset-md-6" %>
+      </div>
       <%= render 'public/posts/index',posts: @favorite_posts %>
     </div>
   </div>

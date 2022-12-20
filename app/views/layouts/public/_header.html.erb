@@ -1,49 +1,50 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <nav class="navbar navbar-expand-lg navbar-light border-bottom border-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
         <i class="fa-solid fa-mountain-sun"></i>
         <span>やまたび</span>
       </a>
+      <p id="notice"><%= notice %></p>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto mb-2">
         <% if user_signed_in? %>
-          <li class="btn btn-dark btn-sm rounded-pill">
-            <%= link_to "マイページ", user_path(current_user),class: 'nav-link text-light' %>
+          <li class="btn btn-sm btn-outline-dark rounded-pill">
+            <%= link_to "マイページ", user_path(current_user),class: 'nav-link text-dark' %>
           </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%=  link_to "会員一覧", users_path,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%=  link_to "会員一覧", users_path,class: 'nav-link text-dark' %>
           </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%=  link_to "投稿一覧", posts_path,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%=  link_to "投稿一覧", posts_path,class: 'nav-link text-dark' %>
           </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%=  link_to "投稿一覧(フォロー)", follow_posts_path,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%=  link_to "投稿一覧(フォロー)", follow_posts_path,class: 'nav-link text-dark' %>
           </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%=  link_to "新規投稿", new_post_path,class: 'nav-link text-dark' %>
+          </li>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-dark' %>
           </li>
         <% else %>
-          <li class="btn btn-dark btn-sm rounded-pill">
-            <%= link_to "ホーム", root_path,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill">
+            <%= link_to "ホーム", root_path,class: 'nav-link text-dark' %>
           </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%= link_to "アバウト", about_path,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-dark' %>
           </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%= link_to "ログイン", new_user_session_path,class: 'nav-link text-dark' %>
           </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%= link_to "ログイン", new_user_session_path,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
           </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: 'nav-link text-light' %>
-          </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%= link_to "管理者ログイン", new_admin_session_path, method: :post, class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%= link_to "管理者ログイン", new_admin_session_path, method: :post, class: 'nav-link text-dark' %>
           </li>
         <% end %>
         </ul>

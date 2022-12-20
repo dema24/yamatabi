@@ -5,7 +5,10 @@
       <%= render 'info', user: @user %>
     </div>
     <div class='col-md-9'>
-      <h2>投稿</h2>
+      <div class="form-inline">
+        <h2>My投稿</h2>
+        <%= link_to "お気に入り一覧へ", favorite_user_path(current_user), class:"col-md-3 offset-md-7" %>
+      </div>
       <%= render 'public/posts/index',posts: @posts %>
     </div>
   </div>

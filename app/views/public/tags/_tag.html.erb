@@ -8,7 +8,11 @@
    <% tag_list.each do |list| %>
      <% if list.posts.count != 0 %>
        <tr>
-         <td><%= list.name %>(<%= list.posts.count %>)</td>
+         <td>
+          <%= link_to tag_posts_path(list) do %>
+           <%= list.name %>(<%= list.posts.count %>)
+          <% end %>
+         </td>
        </tr>
       <% end %>
    <% end %>

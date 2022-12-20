@@ -1,0 +1,18 @@
+<table class="table table-bordered">
+ <thead class="text-center">
+   <tr>
+     <th>DMリスト</th>
+   </tr>
+ </thead>
+ <tbody class="table-borderless ">
+   <% users.each do |user| %>
+     <tr>
+       <td>
+        <%= link_to chat_path(user) do %>
+          <%= user.name %>
+        <% end %>
+       </td>
+     </tr>
+   <% end %>
+ </tbody>
+</table>

@@ -1,22 +1,24 @@
-<table>
+<table class="table table-borderless">
   <tbody>
       <% post.post_comments.each do |post_comment| %>
-      <tr>
-        <td class="pl-1">
-          <%= link_to user_path(post_comment.user), class:"text-reset" do %>
-            <%= image_tag post_comment.user.get_profile_image, class:"rounded-circle", size:"50x50" %>
-            <%= post_comment.user.name %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td><%= post_comment.comment %></td>
-        <td class="pl-3">
-          <% if post_comment.user == current_user %>
-            <%= link_to "Destroy", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger btn-sm pull-right", remote: true %>
-          <% end %>
-        </td>
-      </tr>
+      <tbody class="border">
+        <tr>
+          <td>
+            <%= link_to user_path(post_comment.user), class:"text-reset" do %>
+              <%= image_tag post_comment.user.get_profile_image, class:"rounded-circle", size:"50x50" %>
+              <%= post_comment.user.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= post_comment.comment %></td>
+          <td class="pl-3">
+            <% if post_comment.user == current_user %>
+              <%= link_to "Destroy", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger btn-sm pull-right", remote: true %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
       <% end %>
   </tbody>
 </table>

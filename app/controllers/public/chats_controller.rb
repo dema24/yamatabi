@@ -16,6 +16,7 @@ class Public::ChatsController < ApplicationController
     end
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
+    @users = current_user.followings & current_user.followers
   end
 
   def create

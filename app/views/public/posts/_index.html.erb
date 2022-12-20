@@ -1,6 +1,6 @@
 <div class="d-flex flex-row flex-wrap">
   <% posts.each do |post| %>
-    <div class="flex-column mb-5 mr-3">
+    <div class="flex-column mb-5 mr-3 border">
       <%= link_to post_path(post) do %>
         <div>
           <%= image_tag post.get_main_image, size: "250x200" %>
@@ -9,7 +9,7 @@
       <%= link_to user_path(post.user), class:"text-reset" do %>
         <div>
           <%= image_tag post.user.get_profile_image, size:'20x20', class:"rounded-circle" %>
-          <%= post.user.name %>
+          <%= post.user.name.truncate(14) %>
         </div>
       <% end %>
       <%= link_to post_path(post), class:"text-reset" do %>
@@ -17,13 +17,18 @@
           <div class="pl-4"><%= post.title.truncate(10) %></div>
         </strong>
       <% end %>
-      <div class="pl-4">
+      <div class="pl-4 mb-2">
         <% post.tags.each do |tag| %>
-          #<%= tag.name %><br>
+          <%= link_to tag_posts_path(tag) do %>
+            #<%= tag.name %>
+          <% end %><br>
         <% end %>
       </div>
-      <div class=<%= "favorite-" + post.id.to_s %> >
+      <div class=<%= "favorite-" + post.id.to_s %>>
         <%= render "public/favorites/btn", post: post %>
+      </div>
+      <div class="post-comments-counter">
+        <%= render "public/post_comments/counter", post: post %>
       </div>
     </div>
   <% end %>

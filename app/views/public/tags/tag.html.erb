@@ -4,8 +4,11 @@
      <%= render 'tag', tag_list: @tag_list %>
     </div>
     <div class='col-md-9'>
-      <h2>投稿一覧(フォロー)</h2>
-      <%= render 'index', posts: @posts %>
+      <div class="form-inline">
+        <h2>投稿一覧</h2>
+        <h4 class="ml-1">(#<%= @tag.name %>)</h4>
+      </div>
+      <%= render 'public/posts/index', posts: @posts %>
     </div>
   </div>
 </div>

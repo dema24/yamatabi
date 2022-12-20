@@ -34,14 +34,14 @@ Rails.application.routes.draw do
     end
     resources :posts, only:[:index, :show, :new, :create, :destroy] do
       collection do
-        get 'follow'
+        get 'follow' => 'relationships#follow'
+        get 'tags/:id' => 'tags#tag', as: 'tag'
       end
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
     get '/search' => 'searches#search'
     root to: 'homes#top'
-    get 'home/about' => 'homes#about', as: 'about'
     resources :chats, only: [:show, :create]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

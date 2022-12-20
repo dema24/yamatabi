@@ -1,21 +1,25 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <nav class="navbar navbar-expand-lg navbar-light border-bottom border-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"><span>やまたび</span></a>
+      <a class="navbar-brand" href="/">
+        <i class="fa-solid fa-mountain-sun"></i>
+        <span>やまたび</span>
+      </a>
+      <p id="notice"><%= notice %></p>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if admin_signed_in? %>
-          <li class="btn btn-dark btn-sm rounded-pill">
-            <%=  link_to "会員一覧", admin_users_path,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill">
+            <%=  link_to "会員一覧", admin_users_path,class: 'nav-link text-dark' %>
           </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%=  link_to "投稿一覧", admin_posts_path,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%=  link_to "投稿一覧", admin_posts_path,class: 'nav-link text-dark' %>
           </li>
-          <li class="btn btn-dark btn-sm rounded-pill ml-1">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-light' %>
+          <li class="btn btn-outline-dark btn-sm rounded-pill ml-1">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>
           </li>
         <% end %>
         </ul>
