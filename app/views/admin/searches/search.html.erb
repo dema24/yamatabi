@@ -1,2 +1,22 @@
-<h1>Admin::Searches#search</h1>
-<p>Find me in app/views/admin/searches/search.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class="mt-3 mb-5">
+    <% if @model == 'user' %>
+      <h2 class="d-inline bg-light p-2 px-3 rounded">
+         "<%= @content %>"の検索結果(会員)
+      </h2>
+    <% elsif @model == 'post' %>
+      <h2 class="d-inline bg-light p-2 px-3 rounded">
+         "<%= @content %>"の検索結果(投稿)
+      </h2>
+    <% end %>
+  </div>
+  <div class='row'>
+    <div class='col-md-12'>
+      <% if @model == 'user' %>
+        <%= render 'admin/users/index', users: @records %>
+      <% elsif @model == 'post' %>
+        <%= render 'admin/posts/index', posts: @records %>
+      <% end %>
+    </div>
+  </div>
+</div>

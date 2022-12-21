@@ -1,14 +1,16 @@
 <div class='container px-5 px-sm-0'>
+  <div class="mt-3">
+    <h2 class="d-inline bg-light p-2 px-3 rounded">会員詳細</h2>
+  </div>
   <div class='row'>
-    <div class='col-md-3'>
-      <h2>会員情報</h2>
+    <div class='col-md-3 mt-5'>
+      <div class="text-center mt-1 mb-2">
+        <h4 class="d-inline bg-light p-1 px-3 rounded">会員情報</h4>
+      </div>
       <%= render 'info', user: @user %>
     </div>
-    <div class='col-md-9'>
-      <div class="form-inline">
-        <h2>My投稿</h2>
-        <%= link_to "お気に入り一覧へ", favorite_user_path(current_user), class:"col-md-3 offset-md-7" %>
-      </div>
+    <div class='col-md-9 mt-5'>
+        <%= link_to "お気に入り一覧へ", favorite_user_path(current_user), class:"col-md-3 offset-md-9" %>
       <%= render 'public/posts/index',posts: @posts %>
     </div>
   </div>

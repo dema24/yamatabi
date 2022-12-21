@@ -1,0 +1,32 @@
+<div class="d-flex flex-row flex-wrap">
+  <% posts.each do |post| %>
+    <div class="flex-column mb-5 mr-3 border">
+      <%= link_to admin_post_path(post) do %>
+        <div>
+          <%= image_tag post.get_main_image, size: "250x200" %>
+        </div>
+      <% end %>
+      <%= link_to admin_user_path(post.user), class:"text-reset" do %>
+        <div>
+          <%= image_tag post.user.get_profile_image, size:'20x20', class:"rounded-circle" %>
+          <%= post.user.name.truncate(14) %>
+        </div>
+      <% end %>
+      <%= link_to admin_post_path(post), class:"text-reset" do %>
+        <strong>
+          <div class="pl-4"><%= post.title.truncate(10) %></div>
+        </strong>
+      <% end %>
+      <div class="pl-4 mb-2">
+        <% post.tags.each do |tag| %>
+          <%#= link_to admin_tag_posts_path(tag) do %>
+            #<%= tag.name %>
+          <%# end %><br>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class=" d-flex mb-3 justify-content-center">
+  <%= paginate posts %>
+</div>

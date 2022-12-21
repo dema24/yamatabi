@@ -1,11 +1,15 @@
 <div class='container px-5 px-sm-0'>
+  <div class="mt-3">
+    <h2 class="d-inline bg-light p-2 px-3 rounded">会員一覧</h2>
+  </div>
   <div class='row'>
-    <div class='col-md-3'>
-      <h2>会員情報</h2>
+    <div class='col-md-3 mt-5'>
+      <div class="text-center mt-1 mb-2">
+        <h4 class="d-inline bg-light p-1 px-3 rounded">会員情報</h4>
+      </div>
       <%= render 'info', user: current_user %>
     </div>
-    <div class='col-md-9'>
-      <h2>会員一覧</h2>
+    <div class='col-md-9 mt-5'>
       <%= render 'index',users: @users %>
     </div>
   </div>

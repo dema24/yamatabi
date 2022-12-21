@@ -1,13 +1,12 @@
 <div class='container px-5 px-sm-0'>
+  <div class="mt-3 mb-5">
+    <h2 class="d-inline bg-light p-2 px-3 rounded">投稿一覧(#<%= @tag.name %>)</h2>
+  </div>
   <div class='row'>
     <div class='col-md-3'>
      <%= render 'tag', tag_list: @tag_list %>
     </div>
     <div class='col-md-9'>
-      <div class="form-inline">
-        <h2>投稿一覧</h2>
-        <h4 class="ml-1">(#<%= @tag.name %>)</h4>
-      </div>
       <%= render 'public/posts/index', posts: @posts %>
     </div>
   </div>

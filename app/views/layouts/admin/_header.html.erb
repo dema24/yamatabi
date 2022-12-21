@@ -9,8 +9,8 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+      <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto mb-2">
         <% if admin_signed_in? %>
           <li class="btn btn-outline-dark btn-sm rounded-pill">
             <%=  link_to "会員一覧", admin_users_path,class: 'nav-link text-dark' %>
@@ -22,6 +22,9 @@
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>
           </li>
         <% end %>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <%= render 'admin/searches/form', path: admin_search_path %>
         </ul>
       </div>
     </div>

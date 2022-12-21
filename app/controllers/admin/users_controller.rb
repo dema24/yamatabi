@@ -1,10 +1,13 @@
 class Admin::UsersController < ApplicationController
+  skip_before_action :authenticate_user!, except: [:top]
+  before_action :authenticate_admin!, except: [:top]
   def index
     @users = User.page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit
@@ -23,6 +26,6 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :is_deleted)
+    params.require(:user).permit(:profile_image, :name, :introduction, :email, :is_deleted)
   end
 end

@@ -6,8 +6,8 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
-  validates :title, length:{maximum:20}
-  validates :body, length:{maximum:200}
+  validates :title, presence: true, length:{maximum:20}
+  validates :body, presence: true, length:{maximum:200}
 
   has_one_attached :main_image
   has_many_attached :sub_images

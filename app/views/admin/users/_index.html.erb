@@ -1,0 +1,26 @@
+<table class='table border-bottom'>
+  <thead class="bg-light">
+   <tr>
+     <th>会員ID</th>
+     <th>アカウント名</th>
+     <th>メールアドレス</th>
+     <th>ステータス</th>
+   </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to user.name, admin_user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td>
+          <% if user.is_deleted? %>
+            <p class="text-secondary font-weight-bold">退会</p>
+          <% else %>
+            <p class="text-success font-weight-bold">有効</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

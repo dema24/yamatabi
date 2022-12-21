@@ -1,12 +1,16 @@
 class Public::UsersController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update, :withdraw]
   before_action :ensure_normal_user, only: [:update, :withdraw]
 
   def index
-    @users = User.where(is_deleted: false).page(params[:page]).per(10)
+    @users = User.where(is_deleted: false).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def show
     @user = User.find(params[:id])
+    if @user.is_deleted?
+      redirect_to root_path
+    end
     @posts = @user.posts.page(params[:page]).per(10).order(created_at: :desc)
   end
 
@@ -49,6 +53,13 @@ class Public::UsersController < ApplicationController
     if current_user.email == 'guest@example.com'
       flash[:notice] = 'ゲストユーザーの更新・削除はできません。'
       redirect_to root_path
+    end
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
     end
   end
 

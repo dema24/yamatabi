@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: アカウント名
+        introduction: 自己紹介文
+      post:
+        title: タイトル
+        body: 投稿文
+      post_comment:
+        comment: コメント
+      tag:
+        name: タグ名
+      chat:
+        message: メッセージ
+  activemodel:   # Formオブジェクトを用いた場合
+     attributes:
+       order_object:
+         post_code: 郵便番号

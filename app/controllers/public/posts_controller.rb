@@ -1,7 +1,8 @@
 class Public::PostsController < ApplicationController
+  before_action :ensure_correct_user, only: [:destroy]
   def index
     @posts = Post.page(params[:page]).per(9).order(created_at: :desc)
-    @tag_list = Tag.all
+    @tag_list = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').page(params[:page]).per(10)
   end
 
   def show
@@ -37,5 +38,12 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :main_image, sub_images: [])
+  end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to  request.referer
+    end
   end
 end

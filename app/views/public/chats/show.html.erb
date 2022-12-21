@@ -1,20 +1,22 @@
 <div class='container px-5 px-sm-0'>
+   <div class="mt-3 mb-5">
+     <h2 id="room", class="d-inline bg-light p-2 px-3 rounded mb-5", data-room="<%= @room.id %>" data-user="<%= current_user.id %><%= @user.name %>"><%= @user.name %>さんとのチャット</h2>
+    </div>
   <div class='row'>
     <div class='col-md-3'>
      <%= render 'list', users: @users %>
     </div>
     <div class='col-md-9'>
-      <h2 id="room", class="mb-5", data-room="<%= @room.id %>" data-user="<%= current_user.id %><%= @user.name %>"><%= @user.name %>さんとのチャット</h2>
-      <div class="message">
+      <div class="message border">
         <% @chats.each do |chat| %>
           <% if chat.user_id == current_user.id %>
-            <div style="text-align: right; margin-bottom: 3px;">
+            <div style="text-align: right; margin-bottom: 3px; margin-right: 10px;">
               <p style="display: inline; background-color: #5BFF7F; padding: 2px 5px; border-radius: 5px;">
                 <%= chat.message %>
               </p>
             </div>
           <% else %>
-            <div style="text-align: left; margin-bottom: 3px;">
+            <div style="text-align: left; margin-bottom: 3px; margin-left: 10px;">
               <p style="display: inline; background-color: #EEEEEE; padding: 2px 5; border-radius: 5px;">
                 <%= chat.message %>
               </p>

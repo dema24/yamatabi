@@ -1,34 +1,39 @@
 <div class="container">
-  <h2>会員情報変更</h2>
+  <div class="mt-3">
+    <h2 class="d-inline bg-light p-2 px-3 rounded">登録情報変更</h2>
+  </div>
   <div class="row">
     <div class="offset-md-2 col-md-9 px-5 px-sm-0 mt-3 text-nowrap">
 
       <%= form_with model: current_user do |f| %>
-      <%= render 'layouts/errors', obj: current_user %>
-      <table class="table table-borderless">
-        <tr>
-          <th><%= f.label :image, "プロフィール画像" %></th>
-          <td><%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :name, "アカウント名" %></th>
-          <td><%= f.text_field :name, autofocus: true, required: true, class: 'form-control' %></td>
-        </tr>
+        <%= render 'layouts/errors', obj: current_user %>
+        <table class="table table-borderless">
+          <tr>
+            <th><%= f.label :image, "プロフィール画像" %></th>
+            <td><%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :name, "アカウント名" %></th>
+            <td><%= f.text_field :name, autofocus: true, required: true, class: 'form-control' %></td>
+          </tr>
 
-        <tr>
-          <th><%= f.label :introduction, "自己紹介文" %></th>
-          <td><%= f.text_area :introduction, autofocus: true, class: 'form-control' %></td>
-        </tr>
+          <tr>
+            <th><%= f.label :introduction, "自己紹介文" %></th>
+            <td><%= f.text_area :introduction, autofocus: true, class: 'form-control' %></td>
+          </tr>
 
-        <tr>
-          <th><%= f.label :email, "メールアドレス" %></th>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %></td>
-        </tr>
+          <tr>
+            <th><%= f.label :email, "メールアドレス" %></th>
+            <td><%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", class: 'form-control' %></td>
+          </tr>
 
-        <tr>
-          <td></td>
-          <td><%= f.submit "変更内容を保存する" , class: 'btn btn-success form-control'%></td>
-          <td><%= link_to "退会する", unsubscribe_user_path(current_user), class: "btn btn-danger" %></td>
-        </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "変更内容を保存する" , class: 'btn btn-success form-control'%></td>
+            <td><%= link_to "退会する", unsubscribe_user_path(current_user), class: "btn btn-danger" %></td>
+          </tr>
+        </table>
       <% end %>
-      </table>
+    </div>
+  </div>
+</div>

@@ -28,6 +28,6 @@ class Public::RelationshipsController < ApplicationController
     @users.each do |user|
       @posts = user.posts.page(params[:page]).per(9).order(created_at: :desc)
     end
-    @tag_list = Tag.all
+    @tag_list = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').page(params[:page]).per(10)
   end
 end
