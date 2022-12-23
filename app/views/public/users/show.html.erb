@@ -10,7 +10,7 @@
       <%= render 'info', user: @user %>
     </div>
     <div class='col-md-9 mt-5'>
-        <%= link_to "お気に入り一覧へ", favorite_user_path(current_user), class:"col-md-3 offset-md-9" %>
+        <%= link_to "お気に入り一覧へ", favorite_user_path(@user), class:"col-md-3 offset-md-9" %>
       <%= render 'public/posts/index',posts: @posts %>
     </div>
   </div>

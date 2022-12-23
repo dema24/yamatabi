@@ -15,7 +15,7 @@
   		</h2>
   		<table class='table table-borderless border'>
   		  <tr>
-  		    <%= image_tag @post.get_main_image, size:"824x500", class:"p-1" %>
+  		    <%= image_tag @post.get_main_image, size:"824x618", class:"p-1" %>
   		  </tr>
   		  <tr class="d-flex flex-wrap">
           <% @post.sub_images.each do |sub_image| %>
@@ -46,7 +46,7 @@
             <%= render "public/post_comments/counter", post: @post %>
           </td>
           <% if @post.user == current_user %>
-            <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %></td>
+            <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %></td>
           <% end %>
         </tr>
       </table>

@@ -14,7 +14,7 @@
         <td><%= user.name %></td>
         <td><%= user.introduction %></td>
         <td><%= render "public/relationships/btn", user: user %></td>
-        <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+        <td><%= link_to '詳細', user, class: "user_#{user.id} text-nowrap" %></td>
       </tr>
     <% end %>
   </tbody>
