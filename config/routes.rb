@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only:[:index, :show, :edit, :update, :destroy]
-    resources :posts, only:[:index, :show, :destroy]
+    resources :posts, only:[:index, :show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
     get '/search' => 'searches#search'
   end
 
