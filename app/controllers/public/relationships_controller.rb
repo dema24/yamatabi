@@ -25,9 +25,7 @@ class Public::RelationshipsController < ApplicationController
 
   def follow
     @users = current_user.followings
-    @users.each do |user|
-      @posts = user.posts.page(params[:page]).per(9).order(created_at: :desc)
-    end
+    @posts = Post.where(user_id: @users).order(created_at: :desc).page(params[:page]).per(9)
     @tag_list = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').page(params[:page]).per(10)
   end
 end

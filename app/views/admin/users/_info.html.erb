@@ -14,7 +14,7 @@
   </tr>
   <tr>
 	  <th class="text-nowrap">メールアドレス</th>
-	  <td><%= user.email %></td>
+	  <td><%= user.email.truncate(10) %></td>
   </tr>
   <tr>
 	  <th class="text-nowrap">会員ステータス</th>
