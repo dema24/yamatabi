@@ -3,7 +3,7 @@ class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!, except: [:top]
 
   def index
-    @posts = Post.page(params[:page]).per(9).order(created_at: :desc)
+    @posts = Post.page(params[:page]).per(8).order(created_at: :desc)
     @tag_list = Tag.all
   end
 
