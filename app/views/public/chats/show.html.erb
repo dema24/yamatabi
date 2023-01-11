@@ -30,7 +30,7 @@
       </div>
       <div col="12">
         <%= form_with model: @chat, data: {remote:true}, class:"form-group" do |f| %>
-          <%= f.text_field :message, class:"form-control" %>
+          <%= f.text_field :message, placeholder: "ここにメッセージを入力してください", class:"form-control" %>
           <%= f.hidden_field :room_id %>
         <% end %>
       </div>
