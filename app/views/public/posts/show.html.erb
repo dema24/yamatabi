@@ -36,7 +36,9 @@
         <tr>
           <td>
             <% @post.tags.each do |tag| %>
-              #<%= tag.name %>
+              <%= link_to tag_posts_path(tag) do %>
+                #<%= tag.name %>
+              <% end %><br>
             <% end %>
           </td>
           <td class=<%= "favorite-" + @post.id.to_s %> >
