@@ -29,11 +29,11 @@ class Public::PostsController < ApplicationController
   end
   
   def edit
-    @post = Post.find(params[:id])
   end
   
   def update
-    if @post = Post.update(post_params)
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
       redirect_to post_path(@post), notice: "投稿を編集しました"
     else
       render "edit"
