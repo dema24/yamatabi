@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :ensure_correct_user, only: [:destroy]
+  before_action :ensure_correct_user, only: [:destroy, :update, :edit]
   def index
     @posts = Post.page(params[:page]).per(9).order(created_at: :desc)
     @tag_list = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc').page(params[:page]).per(10)
@@ -27,6 +27,18 @@ class Public::PostsController < ApplicationController
       render :new
     end
   end
+  
+  def edit
+    @post = Post.find(params[:id])
+  end
+  
+  def update
+    if @post = Post.update(post_params)
+      redirect_to post_path(@post), notice: "投稿を編集しました"
+    else
+      render "edit"
+    end
+  end
 
   def destroy
     @post = Post.find(params[:id])
@@ -43,7 +55,7 @@ class Public::PostsController < ApplicationController
   def ensure_correct_user
     @post = Post.find(params[:id])
     unless @post.user == current_user
-      redirect_to  request.referer
+      redirect_to  posts_path ,notice: "権限がありません"
     end
   end
 end

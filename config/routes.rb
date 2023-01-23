@@ -34,7 +34,7 @@ Rails.application.routes.draw do
         get 'followers' => 'relationships#followers', as: 'followers'
      end
     end
-    resources :posts, only:[:index, :show, :new, :create, :destroy] do
+    resources :posts, only:[:index, :show, :new, :edit, :update, :create, :destroy] do
       collection do
         get 'follow' => 'relationships#follow'
         get 'tags/:id' => 'tags#tag', as: 'tag'
