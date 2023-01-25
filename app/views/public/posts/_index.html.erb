@@ -30,6 +30,9 @@
       <div class="post-comments-counter">
         <%= render "public/post_comments/counter", post: post %>
       </div>
+      <div>
+        <%= l post.created_at %>
+      </div>
     </div>
   <% end %>
 </div>

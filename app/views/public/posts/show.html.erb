@@ -47,6 +47,7 @@
           <td class="post-comments-counter">
             <%= render "public/post_comments/counter", post: @post %>
           </td>
+          <td><%= l @post.created_at %></td>
           <% if @post.user == current_user %>
             <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success" %> </td>
             <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %></td>
