@@ -10,6 +10,7 @@ class Public::PostCommentsController < ApplicationController
   def destroy
     @comment = PostComment.find(params[:id])
     @comment.destroy
+    
   end
 
   private
