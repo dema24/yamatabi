@@ -3,7 +3,7 @@
     <div class="flex-column mb-5 mr-3 border">
       <%= link_to admin_post_path(post) do %>
         <div>
-          <%= image_tag post.get_main_image, size: "240x200" %>
+          <%= image_tag post.get_main_image, class: "thumb-img" %>
         </div>
       <% end %>
       <%= link_to admin_user_path(post.user), class:"text-reset" do %>
